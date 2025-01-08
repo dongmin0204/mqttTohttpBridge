@@ -19,6 +19,8 @@ Edit the first few lines of `mqttToMqttConnector.py` to match your server.
 License
 The mqttToMqttConnector is licensed under the terms of the MIT license. See the file LICENSE for details.
 
-Contact to ...
-Author: DongMin Baek
-Email: nm2200521@gmail.com
+
+
+Contact to ...  
+Author: DongMin Baek  
+Email: nm2200521@gmail.com  
