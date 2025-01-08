@@ -1,4 +1,4 @@
-# mqttToMqttConnector
+# mqttToMqttBridge
 
 ## This repository is not perfect now
 
