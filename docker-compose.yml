@@ -1,0 +1,36 @@
+version: "3.8"
+services:
+  mqtt-broker:
+    image: eclipse-mosquitto:latest
+    container_name: mqtt-broker
+    ports:
+      - "1883:1883"
+    networks:
+      - my-network
+
+  aasx-server:
+    container_name: aasx-server
+    image: docker.io/adminshellio/aasx-server-blazor-for-demo:main
+    restart: unless-stopped
+    ports:
+      - "YOURPORT:5001"   
+    environment:
+      - Kestrel__Endpoints__Http__Url=http://*:5001
+    volumes:
+      - ./aasxs:/usr/share/aasxs
+    command: --no-security --data-path /usr/share/aasxs --external-blazor YOURURL
+    networks:
+      - my-network
+
+  mqtt-to-rest:
+    build: .
+    container_name: mqtt-to-rest
+    depends_on:
+      - mqtt-broker
+      - aasx-server
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
