@@ -1,4 +1,3 @@
-version: "3.8"
 services:
   mqtt-broker:
     image: eclipse-mosquitto:latest
@@ -9,11 +8,11 @@ services:
       - my-network
 
   aasx-server:
-    container_name: aasx-server
+    container_name: aasx_server__
     image: docker.io/adminshellio/aasx-server-blazor-for-demo:main
     restart: unless-stopped
     ports:
-      - "YOURPORT:5001"   
+      - "5001:5001"    # 실제 포트 번호로 변경
     environment:
       - Kestrel__Endpoints__Http__Url=http://*:5001
     volumes:
